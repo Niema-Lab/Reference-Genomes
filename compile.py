@@ -70,6 +70,9 @@ function sortTable(columnIndex) {
     table.setAttribute("data-sort-column", columnIndex);
     table.setAttribute("data-sort-direction", direction);
 }
+window.onload = function() {
+    sortTable(0);
+};
 </script>
 </head>
 <body>
