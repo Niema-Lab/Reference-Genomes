@@ -30,21 +30,46 @@ if __name__ == "__main__":
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Reference Genomes</title>
 <style>
-body { font-family: sans-serif; margin: 2rem; }
+body { font-family: monospace; margin: 2rem; }
 table { border-collapse: collapse; width: 100%; }
 th, td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; vertical-align: top; }
-th { background: #f6f8fa; }
+th { background: #f6f8fa; cursor: pointer; user-select: none; }
 tr:nth-child(even) { background: #fafafa; }
 </style>
+<script>
+function sortTable(columnIndex) {
+    var table = document.getElementById("refs-table");
+    var tbody = table.tBodies[0];
+    var rows = Array.prototype.slice.call(tbody.rows);
+    var currentColumn = table.getAttribute("data-sort-column");
+    var currentDirection = table.getAttribute("data-sort-direction");
+    var direction = "asc";
+    if (currentColumn == columnIndex && currentDirection == "asc") {
+        direction = "desc";
+    }
+    rows.sort(function(a, b) {
+        var aText = a.cells[columnIndex].innerText.trim().toLowerCase();
+        var bText = b.cells[columnIndex].innerText.trim().toLowerCase();
+        if (aText < bText) return direction === "asc" ? -1 : 1;
+        if (aText > bText) return direction === "asc" ? 1 : -1;
+        return 0;
+    });
+    rows.forEach(function(row) {
+        tbody.appendChild(row);
+    });
+    table.setAttribute("data-sort-column", columnIndex);
+    table.setAttribute("data-sort-direction", direction);
+}
+</script>
 </head>
 <body>
 <h1>Reference Genomes</h1>
-<table>
+<table id="refs-table">
 <thead>
 <tr>
-<th>ID</th>
-<th>Name</th>
-<th>Short Name(s)</th>
+<th onclick="sortTable(0)">ID</th>
+<th onclick="sortTable(1)">Name</th>
+<th onclick="sortTable(2)">Short Name(s)</th>
 </tr>
 </thead>
 <tbody>
@@ -66,4 +91,5 @@ tr:nth-child(even) { background: #fafafa; }
 </body>
 </html>
 '''
+
     f = open('index.html', 'w'); f.write(html); f.close()
