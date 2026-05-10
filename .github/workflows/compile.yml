@@ -1,5 +1,9 @@
 name: Compile summary file(s)
 on: [push]
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 jobs:
   compile_files:
     runs-on: ubuntu-latest
@@ -12,11 +16,13 @@ jobs:
         sudo apt-get install -y python3
     - name: Run data building script
       run: |
-        python3 compile.py
+        python3 compile.py && \
+        mkdir -p _site && \
+        cp index.html _site/index.html
     - name: Generate release tag
       id: tag
       run: |
-        echo "::set-output name=release_tag::$(date +"%Y-%m-%d_%H-%M-%S")"
+        echo "release_tag=$(date +"%Y-%m-%d_%H-%M-%S")" >> $GITHUB_OUTPUT
     - name: Publish release
       uses: softprops/action-gh-release@v1
       with:
@@ -31,3 +37,12 @@ jobs:
         asset_name: REFS.json
         tag: ${{ steps.tag.outputs.release_tag }}
         overwrite: true
+    - name: Configure GitHub Pages
+      uses: actions/configure-pages@v5
+    - name: Upload Pages artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: _site
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
