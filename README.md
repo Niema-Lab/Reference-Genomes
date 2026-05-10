@@ -1,5 +1,5 @@
 # Reference-Genomes
-Preprocessed reference genomes for use with ViralMSA, ViralWasm, etc. You can view all of the preprocessed reference genomes in this repository via the following web application:
+Preprocessed reference genomes for use with [ViralMSA](https://github.com/niemasd/ViralMSA), [ViralWasm](https://github.com/Niema-Lab/ViralWasm), etc. You can view all of the preprocessed reference genomes in this repository via the following web application:
 
 https://niema-lab.github.io/Reference-Genomes/
 
