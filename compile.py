@@ -35,12 +35,14 @@ table { border-collapse: collapse; width: 100%; }
 th, td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; vertical-align: top; }
 th { background: #f6f8fa; cursor: pointer; user-select: none; }
 tr:nth-child(even) { background: #fafafa; }
+.sort-arrow { margin-left: 0.4rem; }
 </style>
 <script>
 function sortTable(columnIndex) {
     var table = document.getElementById("refs-table");
     var tbody = table.tBodies[0];
     var rows = Array.prototype.slice.call(tbody.rows);
+    var headers = table.tHead.rows[0].cells;
     var currentColumn = table.getAttribute("data-sort-column");
     var currentDirection = table.getAttribute("data-sort-direction");
     var direction = "asc";
@@ -57,6 +59,14 @@ function sortTable(columnIndex) {
     rows.forEach(function(row) {
         tbody.appendChild(row);
     });
+    for (var i = 0; i < headers.length; i++) {
+        var arrow = headers[i].querySelector(".sort-arrow");
+        if (arrow) {
+            arrow.innerText = "";
+        }
+    }
+    var selectedArrow = headers[columnIndex].querySelector(".sort-arrow");
+    selectedArrow.innerText = direction === "asc" ? "▲" : "▼";
     table.setAttribute("data-sort-column", columnIndex);
     table.setAttribute("data-sort-direction", direction);
 }
@@ -67,9 +77,9 @@ function sortTable(columnIndex) {
 <table id="refs-table">
 <thead>
 <tr>
-<th onclick="sortTable(0)">ID</th>
-<th onclick="sortTable(1)">Name</th>
-<th onclick="sortTable(2)">Short Name(s)</th>
+<th onclick="sortTable(0)">ID<span class="sort-arrow"></span></th>
+<th onclick="sortTable(1)">Name<span class="sort-arrow"></span></th>
+<th onclick="sortTable(2)">Short Name(s)<span class="sort-arrow"></span></th>
 </tr>
 </thead>
 <tbody>
