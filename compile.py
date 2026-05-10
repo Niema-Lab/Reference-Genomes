@@ -89,7 +89,7 @@ window.onload = function() {
 '''
     for ID in sorted(REFS):
         html += '''<tr>
-<td><a href="https://github.com/Niema-Lab/Reference-Genomes/tree/main/%s">%s</a></td>
+<td><a href="https://github.com/Niema-Lab/Reference-Genomes/tree/main/%s" target="_blank">%s</a></td>
 <td>%s</td>
 <td>%s</td>
 </tr>
