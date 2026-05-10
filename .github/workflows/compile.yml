@@ -1,6 +1,7 @@
 name: Compile summary file(s)
 on: [push]
 permissions:
+  contents: write
   pages: write
   id-token: write
 jobs:
