@@ -1,9 +1,5 @@
 name: Compile summary file(s)
 on: [push]
-permissions:
-  contents: read
-  pages: write
-  id-token: write
 jobs:
   compile_files:
     runs-on: ubuntu-latest
@@ -22,7 +18,7 @@ jobs:
     - name: Generate release tag
       id: tag
       run: |
-        echo "release_tag=$(date +"%Y-%m-%d_%H-%M-%S")" >> $GITHUB_OUTPUT
+        echo "::set-output name=release_tag::$(date +"%Y-%m-%d_%H-%M-%S")"
     - name: Publish release
       uses: softprops/action-gh-release@v1
       with:
