@@ -102,6 +102,9 @@ window.onload = function() {
     html += '''</tbody>
 </table>
 </body>
+<footer>
+<a href="https://niema.net" target="_blank">Niema Moshiri</a> &mdash; <a href="https://github.com/Niema-Lab/Reference-Genomes" target="_blank">https://github.com/Niema-Lab/Reference-Genomes</a>
+</footer>
 </html>
 '''
 
