@@ -71,7 +71,7 @@ function sortTable(columnIndex) {
     table.setAttribute("data-sort-direction", direction);
 }
 window.onload = function() {
-    sortTable(0);
+    sortTable(1);
 };
 </script>
 </head>
