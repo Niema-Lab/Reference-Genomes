@@ -28,7 +28,7 @@ if __name__ == "__main__":
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Reference Genomes</title>
+<title>Reference Genomes - Niema Lab</title>
 <style>
 body { font-family: monospace; margin: 2rem; }
 table { border-collapse: collapse; width: 100%; }
@@ -76,7 +76,7 @@ window.onload = function() {
 </script>
 </head>
 <body>
-<h1>Reference Genomes</h1>
+<h1><a href="https://github.com/Niema-Lab/Reference-Genomes" target="_blank">Reference Genomes</a></h1>
 <table id="refs-table">
 <thead>
 <tr>
@@ -103,7 +103,7 @@ window.onload = function() {
 </table>
 </body>
 <footer>
-<a href="https://niema.net" target="_blank">Niema Moshiri</a> &mdash; <a href="https://github.com/Niema-Lab/Reference-Genomes" target="_blank">https://github.com/Niema-Lab/Reference-Genomes</a>
+<p style="text-align: center;"><a href="https://niema.net" target="_blank">Niema Moshiri</a></p>
 </footer>
 </html>
 '''
